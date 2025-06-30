@@ -1,9 +1,9 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /Otero_Samir_ui_garden
 
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 
 COPY . .
 RUN npm run build-storybook
