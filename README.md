@@ -8,11 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1. Build the Docker image:
    ```bash
-   docker build -t lastName_firstName_coding_assignment12 .
+   docker build -t otero_samir_coding_assignment12 .
 
 2. Run the container:
     ```bash
-    docker run -p 8083:8083 --name Otero_Samir_coding_assignment12 Otero_Samir_coding_assignment12
+    docker run -p 8083:8083 --name otero_samir_coding_assignment12 otero_samir_coding_assignment12
 
 3. Access the component library at: http://localhost:8083
 
