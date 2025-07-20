@@ -49,3 +49,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. **Document edge cases** in Storybook stories
 
 This assignment demonstrates real-world component library development skills that are highly valuable in modern web development. Take your time with each phase and test thoroughly!
+
+## Code Quality Checks
+
+The following checks run automatically on pre-commit:
+- **Prettier**: Code formatting
+- **ESLint**: Code linting
+- **Tests**: Unit test suite
+- **lint-staged**: Staged file processing
+
+### Manual Commands
+
+```bash
+npm run format:check    # Check formatting
+npm run format         # Fix formatting
+npm run lint           # Run linting
+npm run lint:fix       # Fix linting issues
+npm run test:ci        # Run tests
+
+```
+
