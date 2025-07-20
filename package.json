@@ -67,6 +67,8 @@
     "webpack": "^5.99.9"
   },
   "husky": {
-    "hooks": {}
+    "hooks": {
+      "pre-commit": "prettier --write . && git add -A ."
+    }
   }
 }

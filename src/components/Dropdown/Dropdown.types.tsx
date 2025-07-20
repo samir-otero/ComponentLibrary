@@ -4,7 +4,7 @@ export interface DropdownProps {
   disabled?: boolean;
   backgroundColor?: string;
   color?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   onChange?: (value: string) => void;
   value?: string;
   className?: string;

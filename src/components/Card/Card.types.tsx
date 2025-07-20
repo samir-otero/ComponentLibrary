@@ -14,11 +14,15 @@ export interface CardProps {
   backgroundColor?: string;
   borderColor?: string;
   borderRadius?: string;
-  elevation?: 'none' | 'low' | 'default' | 'medium' | 'high';
-  size?: 'small' | 'medium' | 'large';
+  elevation?: "none" | "low" | "default" | "medium" | "high";
+  size?: "small" | "medium" | "large";
   padding?: string;
   margin?: string;
   fullWidth?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>) => void;
+  onClick?: (
+    event:
+      | React.MouseEvent<HTMLDivElement>
+      | React.KeyboardEvent<HTMLDivElement>,
+  ) => void;
   className?: string;
 }

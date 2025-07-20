@@ -1,152 +1,155 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { Table } from './Table';
-import { TableColumn, TableRow } from './Table.types';
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { Table } from "./Table";
+import { TableColumn, TableRow } from "./Table.types";
 
-const mockAction = (actionName: string) => (...args: any[]) => {
-  console.log(`${actionName}:`, args);
-};
+const mockAction =
+  (actionName: string) =>
+  (...args: any[]) => {
+    console.log(`${actionName}:`, args);
+  };
 
 // Sample data for stories
 const sampleColumns: TableColumn[] = [
-  { key: 'id', title: 'ID', width: '60px', sortable: true },
-  { key: 'name', title: 'Name', sortable: true },
-  { key: 'email', title: 'Email', sortable: true },
-  { key: 'role', title: 'Role', align: 'center' },
-  { key: 'status', title: 'Status', align: 'center' },
-  { key: 'joinDate', title: 'Join Date', align: 'right', sortable: true },
+  { key: "id", title: "ID", width: "60px", sortable: true },
+  { key: "name", title: "Name", sortable: true },
+  { key: "email", title: "Email", sortable: true },
+  { key: "role", title: "Role", align: "center" },
+  { key: "status", title: "Status", align: "center" },
+  { key: "joinDate", title: "Join Date", align: "right", sortable: true },
 ];
 
 const sampleData: TableRow[] = [
   {
     id: 1,
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    role: 'Admin',
-    status: 'Active',
-    joinDate: '2023-01-15',
+    name: "John Doe",
+    email: "john.doe@example.com",
+    role: "Admin",
+    status: "Active",
+    joinDate: "2023-01-15",
   },
   {
     id: 2,
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
-    role: 'User',
-    status: 'Active',
-    joinDate: '2023-02-20',
+    name: "Jane Smith",
+    email: "jane.smith@example.com",
+    role: "User",
+    status: "Active",
+    joinDate: "2023-02-20",
   },
   {
     id: 3,
-    name: 'Bob Johnson',
-    email: 'bob.johnson@example.com',
-    role: 'Moderator',
-    status: 'Inactive',
-    joinDate: '2023-03-10',
+    name: "Bob Johnson",
+    email: "bob.johnson@example.com",
+    role: "Moderator",
+    status: "Inactive",
+    joinDate: "2023-03-10",
   },
   {
     id: 4,
-    name: 'Alice Brown',
-    email: 'alice.brown@example.com',
-    role: 'User',
-    status: 'Active',
-    joinDate: '2023-04-05',
+    name: "Alice Brown",
+    email: "alice.brown@example.com",
+    role: "User",
+    status: "Active",
+    joinDate: "2023-04-05",
   },
   {
     id: 5,
-    name: 'Charlie Wilson',
-    email: 'charlie.wilson@example.com',
-    role: 'Admin',
-    status: 'Active',
-    joinDate: '2023-05-12',
+    name: "Charlie Wilson",
+    email: "charlie.wilson@example.com",
+    role: "Admin",
+    status: "Active",
+    joinDate: "2023-05-12",
   },
 ];
 
 const meta = {
-  title: 'Components/Table',
+  title: "Components/Table",
   component: Table,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A flexible table component with sorting, responsive design, and multiple styling options.',
+        component:
+          "A flexible table component with sorting, responsive design, and multiple styling options.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     columns: {
-      description: 'Array of column definitions',
-      control: { type: 'object' },
+      description: "Array of column definitions",
+      control: { type: "object" },
     },
     data: {
-      description: 'Array of row data',
-      control: { type: 'object' },
+      description: "Array of row data",
+      control: { type: "object" },
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disabled state',
+      control: "boolean",
+      description: "Disabled state",
     },
     striped: {
-      control: 'boolean',
-      description: 'Striped rows',
+      control: "boolean",
+      description: "Striped rows",
     },
     bordered: {
-      control: 'boolean',
-      description: 'Table borders',
+      control: "boolean",
+      description: "Table borders",
     },
     hoverable: {
-      control: 'boolean',
-      description: 'Hover effect on rows',
+      control: "boolean",
+      description: "Hover effect on rows",
     },
     size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
-      description: 'Table size',
+      control: { type: "select" },
+      options: ["small", "medium", "large"],
+      description: "Table size",
     },
     caption: {
-      control: 'text',
-      description: 'Table caption',
+      control: "text",
+      description: "Table caption",
     },
     loading: {
-      control: 'boolean',
-      description: 'Loading state',
+      control: "boolean",
+      description: "Loading state",
     },
     emptyMessage: {
-      control: 'text',
-      description: 'Empty state message',
+      control: "text",
+      description: "Empty state message",
     },
     backgroundColor: {
-      control: 'color',
-      description: 'Table background color',
+      control: "color",
+      description: "Table background color",
     },
     headerBackgroundColor: {
-      control: 'color',
-      description: 'Header background color',
+      control: "color",
+      description: "Header background color",
     },
     textColor: {
-      control: 'color',
-      description: 'Text color',
+      control: "color",
+      description: "Text color",
     },
     borderColor: {
-      control: 'color',
-      description: 'Border color',
+      control: "color",
+      description: "Border color",
     },
     maxHeight: {
-      control: 'text',
-      description: 'Maximum height with scrolling',
+      control: "text",
+      description: "Maximum height with scrolling",
     },
     onRowClick: {
-      action: 'row-clicked',
-      description: 'Row click handler',
+      action: "row-clicked",
+      description: "Row click handler",
     },
     onSort: {
-      action: 'sorted',
-      description: 'Sort handler',
+      action: "sorted",
+      description: "Sort handler",
     },
   },
   args: {
     columns: sampleColumns,
     data: sampleData,
-    onRowClick: mockAction('onRowClick'),
-    onSort: mockAction('onSort'),
+    onRowClick: mockAction("onRowClick"),
+    onSort: mockAction("onSort"),
   },
 } satisfies Meta<typeof Table>;
 
@@ -175,7 +178,7 @@ export const Small: Story = {
   args: {
     columns: sampleColumns,
     data: sampleData,
-    size: 'small',
+    size: "small",
   },
 };
 
@@ -183,7 +186,7 @@ export const Medium: Story = {
   args: {
     columns: sampleColumns,
     data: sampleData,
-    size: 'medium',
+    size: "medium",
   },
 };
 
@@ -191,7 +194,7 @@ export const Large: Story = {
   args: {
     columns: sampleColumns,
     data: sampleData,
-    size: 'large',
+    size: "large",
   },
 };
 
@@ -235,7 +238,7 @@ export const WithCaption: Story = {
   args: {
     columns: sampleColumns,
     data: sampleData,
-    caption: 'User Management Table',
+    caption: "User Management Table",
     bordered: true,
   },
 };
@@ -245,7 +248,7 @@ export const EmptyState: Story = {
   args: {
     columns: sampleColumns,
     data: [],
-    emptyMessage: 'No users found',
+    emptyMessage: "No users found",
     bordered: true,
   },
 };
@@ -264,10 +267,10 @@ export const CustomColors: Story = {
   args: {
     columns: sampleColumns,
     data: sampleData,
-    backgroundColor: '#f8f9fa',
-    headerBackgroundColor: '#007bff',
-    textColor: '#ffffff',
-    borderColor: '#0056b3',
+    backgroundColor: "#f8f9fa",
+    headerBackgroundColor: "#007bff",
+    textColor: "#ffffff",
+    borderColor: "#0056b3",
     bordered: true,
   },
 };
@@ -277,7 +280,7 @@ export const ScrollableTable: Story = {
   args: {
     columns: sampleColumns,
     data: [...sampleData, ...sampleData, ...sampleData], // Triple the data
-    maxHeight: '300px',
+    maxHeight: "300px",
     bordered: true,
     striped: true,
   },
@@ -300,27 +303,27 @@ export const Interactive: Story = {
 export const ResponsiveShowcase: Story = {
   args: {
     columns: [
-      { key: 'id', title: 'ID', width: '60px' },
-      { key: 'name', title: 'Full Name' },
-      { key: 'email', title: 'Email Address' },
-      { key: 'role', title: 'Role', align: 'center' },
-      { key: 'status', title: 'Status', align: 'center' },
-      { key: 'joinDate', title: 'Join Date', align: 'right' },
-      { key: 'lastLogin', title: 'Last Login', align: 'right' },
+      { key: "id", title: "ID", width: "60px" },
+      { key: "name", title: "Full Name" },
+      { key: "email", title: "Email Address" },
+      { key: "role", title: "Role", align: "center" },
+      { key: "status", title: "Status", align: "center" },
+      { key: "joinDate", title: "Join Date", align: "right" },
+      { key: "lastLogin", title: "Last Login", align: "right" },
     ],
-    data: sampleData.map(row => ({
+    data: sampleData.map((row) => ({
       ...row,
-      lastLogin: '2023-06-15 14:30',
+      lastLogin: "2023-06-15 14:30",
     })),
     striped: true,
     bordered: true,
     hoverable: true,
-    size: 'medium',
+    size: "medium",
   },
   parameters: {
     docs: {
       description: {
-        story: 'Table with many columns to demonstrate responsive behavior',
+        story: "Table with many columns to demonstrate responsive behavior",
       },
     },
   },
@@ -333,18 +336,33 @@ export const AllSizes: Story = {
     const shortColumns = sampleColumns.slice(0, 4);
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
         <div>
-          <h3 style={{ marginBottom: '16px' }}>Small Size</h3>
-          <Table {...args} columns={shortColumns} data={shortData} size="small" />
+          <h3 style={{ marginBottom: "16px" }}>Small Size</h3>
+          <Table
+            {...args}
+            columns={shortColumns}
+            data={shortData}
+            size="small"
+          />
         </div>
         <div>
-          <h3 style={{ marginBottom: '16px' }}>Medium Size</h3>
-          <Table {...args} columns={shortColumns} data={shortData} size="medium" />
+          <h3 style={{ marginBottom: "16px" }}>Medium Size</h3>
+          <Table
+            {...args}
+            columns={shortColumns}
+            data={shortData}
+            size="medium"
+          />
         </div>
         <div>
-          <h3 style={{ marginBottom: '16px' }}>Large Size</h3>
-          <Table {...args} columns={shortColumns} data={shortData} size="large" />
+          <h3 style={{ marginBottom: "16px" }}>Large Size</h3>
+          <Table
+            {...args}
+            columns={shortColumns}
+            data={shortData}
+            size="large"
+          />
         </div>
       </div>
     );
@@ -356,7 +374,7 @@ export const AllSizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Comparison of all available table sizes',
+        story: "Comparison of all available table sizes",
       },
     },
   },

@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { LabelProps } from './Label.types';
+import React from "react";
+import styled from "styled-components";
+import { LabelProps } from "./Label.types";
 
 const StyledLabel = styled.label<LabelProps>`
   font-family: inherit;
   font-weight: 500;
   line-height: 1.5;
-  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: all 0.2s ease-in-out;
   display: inline-block;
   user-select: none;
@@ -14,12 +14,12 @@ const StyledLabel = styled.label<LabelProps>`
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'small':
+      case "small":
         return `
           font-size: 12px;
           padding: 2px 0;
         `;
-      case 'large':
+      case "large":
         return `
           font-size: 18px;
           padding: 8px 0;
@@ -34,8 +34,8 @@ const StyledLabel = styled.label<LabelProps>`
 
   /* Color and background */
   ${({ color, backgroundColor, disabled }) => {
-    const textColor = disabled ? '#6c757d' : (color || '#212529');
-    const bgColor = disabled ? '#f8f9fa' : (backgroundColor || 'transparent');
+    const textColor = disabled ? "#6c757d" : color || "#212529";
+    const bgColor = disabled ? "#f8f9fa" : backgroundColor || "transparent";
 
     return `
       color: ${textColor};
@@ -52,30 +52,30 @@ const StyledLabel = styled.label<LabelProps>`
       `;
     }
 
-    const textColor = color || '#212529';
+    const textColor = color || "#212529";
 
     switch (variant) {
-      case 'secondary':
+      case "secondary":
         return `
           color: #6c757d;
           font-weight: 400;
         `;
-      case 'success':
+      case "success":
         return `
           color: #28a745;
           font-weight: 500;
         `;
-      case 'danger':
+      case "danger":
         return `
           color: #dc3545;
           font-weight: 500;
         `;
-      case 'warning':
+      case "warning":
         return `
           color: #ffc107;
           font-weight: 500;
         `;
-      case 'info':
+      case "info":
         return `
           color: #17a2b8;
           font-weight: 500;
@@ -88,7 +88,9 @@ const StyledLabel = styled.label<LabelProps>`
   }}
 
   /* Required indicator */
-  ${({ required }) => required && `
+  ${({ required }) =>
+    required &&
+    `
     &::after {
       content: ' *';
       color: #dc3545;
@@ -97,22 +99,30 @@ const StyledLabel = styled.label<LabelProps>`
   `}
 
   /* Bold style */
-  ${({ bold }) => bold && `
+  ${({ bold }) =>
+    bold &&
+    `
     font-weight: 700;
   `}
 
   /* Italic style */
-  ${({ italic }) => italic && `
+  ${({ italic }) =>
+    italic &&
+    `
     font-style: italic;
   `}
 
   /* Underline style */
-  ${({ underline }) => underline && `
+  ${({ underline }) =>
+    underline &&
+    `
     text-decoration: underline;
   `}
 
   /* Full width */
-  ${({ fullWidth }) => fullWidth && `
+  ${({ fullWidth }) =>
+    fullWidth &&
+    `
     width: 100%;
     display: block;
   `}
@@ -129,10 +139,10 @@ const StyledLabel = styled.label<LabelProps>`
   /* Hover effects for non-disabled labels */
   &:hover:not([disabled]) {
     ${({ variant, color }) => {
-      if (variant === 'primary' || !variant) {
+      if (variant === "primary" || !variant) {
         return `opacity: 0.8;`;
       }
-      return '';
+      return "";
     }}
   }
 
@@ -146,12 +156,12 @@ const StyledLabel = styled.label<LabelProps>`
   @media (max-width: 768px) {
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             font-size: 11px;
             padding: 1px 0;
           `;
-        case 'large':
+        case "large":
           return `
             font-size: 16px;
             padding: 6px 0;
@@ -168,12 +178,12 @@ const StyledLabel = styled.label<LabelProps>`
   @media (max-width: 480px) {
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             font-size: 10px;
             padding: 1px 0;
           `;
-        case 'large':
+        case "large":
           return `
             font-size: 15px;
             padding: 5px 0;
@@ -193,8 +203,8 @@ export const Label: React.FC<LabelProps> = ({
   disabled = false,
   color,
   backgroundColor,
-  variant = 'primary',
-  size = 'medium',
+  variant = "primary",
+  size = "medium",
   required = false,
   bold = false,
   italic = false,

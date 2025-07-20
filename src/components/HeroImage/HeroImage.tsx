@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { HeroImageProps } from './HeroImage.types';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { HeroImageProps } from "./HeroImage.types";
 
 const HeroContainer = styled.div<HeroImageProps>`
   position: relative;
   width: 100%;
-  height: ${({ height }) => height || '400px'};
+  height: ${({ height }) => height || "400px"};
   overflow: hidden;
   display: flex;
   align-items: ${({ verticalAlign }) => {
     switch (verticalAlign) {
-      case 'top': return 'flex-start';
-      case 'bottom': return 'flex-end';
-      default: return 'center';
+      case "top":
+        return "flex-start";
+      case "bottom":
+        return "flex-end";
+      default:
+        return "center";
     }
   }};
   justify-content: ${({ textAlign }) => {
     switch (textAlign) {
-      case 'left': return 'flex-start';
-      case 'right': return 'flex-end';
-      default: return 'center';
+      case "left":
+        return "flex-start";
+      case "right":
+        return "flex-end";
+      default:
+        return "center";
     }
   }};
   cursor: ${({ onClick, disabled }) => {
-    if (disabled) return 'not-allowed';
-    if (onClick) return 'pointer';
-    return 'default';
+    if (disabled) return "not-allowed";
+    if (onClick) return "pointer";
+    return "default";
   }};
 
-  ${({ disabled }) => disabled && `
+  ${({ disabled }) =>
+    disabled &&
+    `
     opacity: 0.65;
     filter: grayscale(100%);
   `}
 
-  ${({ onClick, disabled }) => onClick && !disabled && `
+  ${({ onClick, disabled }) =>
+    onClick &&
+    !disabled &&
+    `
     transition: transform 0.3s ease-in-out;
 
     &:hover {
@@ -53,21 +64,21 @@ const HeroContainer = styled.div<HeroImageProps>`
   /* Responsive design */
   @media (max-width: 768px) {
     height: ${({ height }) => {
-      if (height && height.includes('px')) {
+      if (height && height.includes("px")) {
         const numericHeight = parseInt(height);
         return `${Math.max(numericHeight * 0.7, 250)}px`;
       }
-      return '250px';
+      return "250px";
     }};
   }
 
   @media (max-width: 480px) {
     height: ${({ height }) => {
-      if (height && height.includes('px')) {
+      if (height && height.includes("px")) {
         const numericHeight = parseInt(height);
         return `${Math.max(numericHeight * 0.6, 200)}px`;
       }
-      return '200px';
+      return "200px";
     }};
   }
 `;
@@ -78,7 +89,7 @@ const BackgroundImage = styled.img<HeroImageProps>`
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: ${({ objectFit }) => objectFit || 'cover'};
+  object-fit: ${({ objectFit }) => objectFit || "cover"};
   z-index: 1;
 `;
 
@@ -99,23 +110,23 @@ const Overlay = styled.div<HeroImageProps>`
 
   ${({ showGradient, gradientDirection, overlayColor, overlayOpacity }) => {
     if (showGradient) {
-      const baseColor = overlayColor || 'rgba(0, 0, 0, 0.7)';
-      const transparentColor = overlayColor ?
-        overlayColor.replace(/[\d.]+\)$/g, '0)') :
-        'rgba(0, 0, 0, 0)';
+      const baseColor = overlayColor || "rgba(0, 0, 0, 0.7)";
+      const transparentColor = overlayColor
+        ? overlayColor.replace(/[\d.]+\)$/g, "0)")
+        : "rgba(0, 0, 0, 0)";
 
       switch (gradientDirection) {
-        case 'to-top':
+        case "to-top":
           return `background: linear-gradient(to top, ${baseColor}, ${transparentColor});`;
-        case 'to-left':
+        case "to-left":
           return `background: linear-gradient(to left, ${baseColor}, ${transparentColor});`;
-        case 'to-right':
+        case "to-right":
           return `background: linear-gradient(to right, ${baseColor}, ${transparentColor});`;
         default:
           return `background: linear-gradient(to bottom, ${transparentColor}, ${baseColor});`;
       }
     }
-    return '';
+    return "";
   }}
 `;
 
@@ -123,8 +134,8 @@ const ContentWrapper = styled.div<HeroImageProps>`
   position: relative;
   z-index: 3;
   padding: 20px;
-  text-align: ${({ textAlign }) => textAlign || 'center'};
-  color: ${({ textColor }) => textColor || '#ffffff'};
+  text-align: ${({ textAlign }) => textAlign || "center"};
+  color: ${({ textColor }) => textColor || "#ffffff"};
   max-width: 800px;
   width: 100%;
 
@@ -179,15 +190,15 @@ const PlaceholderDiv = styled.div<{ height?: string }>`
   color: #6c757d;
   font-size: 18px;
   text-align: center;
-  height: ${({ height }) => height || '400px'};
+  height: ${({ height }) => height || "400px"};
 
   @media (max-width: 768px) {
     height: ${({ height }) => {
-      if (height && height.includes('px')) {
+      if (height && height.includes("px")) {
         const numericHeight = parseInt(height);
         return `${Math.max(numericHeight * 0.7, 250)}px`;
       }
-      return '250px';
+      return "250px";
     }};
   }
 `;
@@ -197,20 +208,20 @@ export const HeroImage: React.FC<HeroImageProps> = ({
   alt,
   title,
   subtitle,
-  height = '400px',
+  height = "400px",
   overlayColor,
   overlayOpacity = 0.3,
-  textColor = '#ffffff',
-  textAlign = 'center',
-  verticalAlign = 'center',
+  textColor = "#ffffff",
+  textAlign = "center",
+  verticalAlign = "center",
   disabled = false,
   onClick,
   className,
-  loading = 'lazy',
-  objectFit = 'cover',
+  loading = "lazy",
+  objectFit = "cover",
   children,
   showGradient = false,
-  gradientDirection = 'to-bottom',
+  gradientDirection = "to-bottom",
   ...props
 }) => {
   const [imageError, setImageError] = useState(false);
@@ -226,7 +237,7 @@ export const HeroImage: React.FC<HeroImageProps> = ({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!disabled && onClick && (event.key === 'Enter' || event.key === ' ')) {
+    if (!disabled && onClick && (event.key === "Enter" || event.key === " ")) {
       event.preventDefault();
       onClick(event as any);
     }
@@ -252,8 +263,10 @@ export const HeroImage: React.FC<HeroImageProps> = ({
       onKeyDown={handleKeyDown}
       className={className}
       tabIndex={onClick && !disabled ? 0 : -1}
-      role={onClick ? 'button' : undefined}
-      aria-label={onClick ? `${title || alt} - clickable hero image` : undefined}
+      role={onClick ? "button" : undefined}
+      aria-label={
+        onClick ? `${title || alt} - clickable hero image` : undefined
+      }
       {...props}
     >
       <BackgroundImage
@@ -279,16 +292,10 @@ export const HeroImage: React.FC<HeroImageProps> = ({
         textAlign={textAlign}
         textColor={textColor}
       >
-        {title && (
-          <HeroTitle textColor={textColor}>
-            {title}
-          </HeroTitle>
-        )}
+        {title && <HeroTitle textColor={textColor}>{title}</HeroTitle>}
 
         {subtitle && (
-          <HeroSubtitle textColor={textColor}>
-            {subtitle}
-          </HeroSubtitle>
+          <HeroSubtitle textColor={textColor}>{subtitle}</HeroSubtitle>
         )}
 
         {children}

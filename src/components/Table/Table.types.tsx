@@ -2,7 +2,7 @@ export interface TableColumn {
   key: string;
   title: string;
   width?: string;
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   sortable?: boolean;
 }
 
@@ -18,12 +18,12 @@ export interface TableProps {
   striped?: boolean;
   bordered?: boolean;
   hoverable?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   caption?: string;
   loading?: boolean;
   emptyMessage?: string;
   onRowClick?: (row: TableRow) => void;
-  onSort?: (columnKey: string, direction: 'asc' | 'desc') => void;
+  onSort?: (columnKey: string, direction: "asc" | "desc") => void;
   className?: string;
   maxHeight?: string;
   backgroundColor?: string;
@@ -39,9 +39,9 @@ export interface TableHeaderProps {
   backgroundColor?: string;
   textColor?: string;
   borderColor?: string;
-  onSort?: (columnKey: string, direction: 'asc' | 'desc') => void;
+  onSort?: (columnKey: string, direction: "asc" | "desc") => void;
   sortColumn?: string;
-  sortDirection?: 'asc' | 'desc';
+  sortDirection?: "asc" | "desc";
 }
 
 export interface TableRowProps {
@@ -59,7 +59,7 @@ export interface TableRowProps {
 
 export interface TableCellProps {
   children: React.ReactNode;
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   width?: string;
   disabled?: boolean;
   backgroundColor?: string;

@@ -1,33 +1,44 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { ImgProps } from './Img.types';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { ImgProps } from "./Img.types";
 
-type ImgWrapperProps = Omit<ImgProps, 'src' | 'alt'>;
+type ImgWrapperProps = Omit<ImgProps, "src" | "alt">;
 
 const StyledImageWrapper = styled.div<ImgWrapperProps>`
   display: inline-block;
   position: relative;
   overflow: hidden;
 
-  ${({ borderRadius }) => borderRadius && `
+  ${({ borderRadius }) =>
+    borderRadius &&
+    `
     border-radius: ${borderRadius};
   `}
 
-  ${({ width }) => width && `
-    width: ${typeof width === 'number' ? `${width}px` : width};
+  ${({ width }) =>
+    width &&
+    `
+    width: ${typeof width === "number" ? `${width}px` : width};
   `}
 
-  ${({ height }) => height && `
-    height: ${typeof height === 'number' ? `${height}px` : height};
+  ${({ height }) =>
+    height &&
+    `
+    height: ${typeof height === "number" ? `${height}px` : height};
   `}
 
-  ${({ disabled }) => disabled && `
+  ${({ disabled }) =>
+    disabled &&
+    `
     opacity: 0.65;
     cursor: not-allowed;
     filter: grayscale(100%);
   `}
 
-  ${({ onClick, disabled }) => onClick && !disabled && `
+  ${({ onClick, disabled }) =>
+    onClick &&
+    !disabled &&
+    `
     cursor: pointer;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
@@ -53,11 +64,15 @@ const StyledImage = styled.img<ImgProps>`
   height: 100%;
   display: block;
 
-  ${({ objectFit }) => objectFit && `
+  ${({ objectFit }) =>
+    objectFit &&
+    `
     object-fit: ${objectFit};
   `}
 
-  ${({ borderRadius }) => borderRadius && `
+  ${({ borderRadius }) =>
+    borderRadius &&
+    `
     border-radius: ${borderRadius};
   `}
 
@@ -69,7 +84,11 @@ const StyledImage = styled.img<ImgProps>`
   }
 `;
 
-const PlaceholderDiv = styled.div<{ width?: string | number; height?: string | number; borderRadius?: string }>`
+const PlaceholderDiv = styled.div<{
+  width?: string | number;
+  height?: string | number;
+  borderRadius?: string;
+}>`
   background-color: #f8f9fa;
   border: 2px dashed #dee2e6;
   display: flex;
@@ -79,15 +98,21 @@ const PlaceholderDiv = styled.div<{ width?: string | number; height?: string | n
   font-size: 14px;
   text-align: center;
 
-  ${({ width }) => width && `
-    width: ${typeof width === 'number' ? `${width}px` : width};
+  ${({ width }) =>
+    width &&
+    `
+    width: ${typeof width === "number" ? `${width}px` : width};
   `}
 
-  ${({ height }) => height && `
-    height: ${typeof height === 'number' ? `${height}px` : height};
+  ${({ height }) =>
+    height &&
+    `
+    height: ${typeof height === "number" ? `${height}px` : height};
   `}
 
-  ${({ borderRadius }) => borderRadius && `
+  ${({ borderRadius }) =>
+    borderRadius &&
+    `
     border-radius: ${borderRadius};
   `}
 
@@ -100,13 +125,13 @@ export const Img: React.FC<ImgProps> = ({
   alt,
   width,
   height,
-  objectFit = 'cover',
+  objectFit = "cover",
   borderRadius,
   disabled = false,
   onClick,
   className,
-  loading = 'lazy',
-  placeholder = 'Image not available',
+  loading = "lazy",
+  placeholder = "Image not available",
   fallbackSrc,
   ...props
 }) => {

@@ -1,34 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
-import { TextProps } from './Text.types';
+import React from "react";
+import styled from "styled-components";
+import { TextProps } from "./Text.types";
 
 const StyledText = styled.span<TextProps>`
   font-family: inherit;
   line-height: 1.5;
   transition: all 0.2s ease-in-out;
-  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'inherit'};
-  user-select: ${({ disabled }) => disabled ? 'none' : 'auto'};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "inherit")};
+  user-select: ${({ disabled }) => (disabled ? "none" : "auto")};
 
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'xs':
+      case "xs":
         return `
           font-size: 10px;
         `;
-      case 'small':
+      case "small":
         return `
           font-size: 12px;
         `;
-      case 'large':
+      case "large":
         return `
           font-size: 18px;
         `;
-      case 'xl':
+      case "xl":
         return `
           font-size: 22px;
         `;
-      case '2xl':
+      case "2xl":
         return `
           font-size: 28px;
         `;
@@ -41,8 +41,8 @@ const StyledText = styled.span<TextProps>`
 
   /* Color and background */
   ${({ color, backgroundColor, disabled }) => {
-    const textColor = disabled ? '#6c757d' : (color || '#212529');
-    const bgColor = disabled ? '#f8f9fa' : (backgroundColor || 'transparent');
+    const textColor = disabled ? "#6c757d" : color || "#212529";
+    const bgColor = disabled ? "#f8f9fa" : backgroundColor || "transparent";
 
     return `
       color: ${textColor};
@@ -59,38 +59,38 @@ const StyledText = styled.span<TextProps>`
       `;
     }
 
-    const textColor = color || '#212529';
+    const textColor = color || "#212529";
 
     switch (variant) {
-      case 'secondary':
+      case "secondary":
         return `
           color: #6c757d;
         `;
-      case 'success':
+      case "success":
         return `
           color: #28a745;
         `;
-      case 'danger':
+      case "danger":
         return `
           color: #dc3545;
         `;
-      case 'warning':
+      case "warning":
         return `
           color: #ffc107;
         `;
-      case 'info':
+      case "info":
         return `
           color: #17a2b8;
         `;
-      case 'light':
+      case "light":
         return `
           color: #f8f9fa;
         `;
-      case 'dark':
+      case "dark":
         return `
           color: #343a40;
         `;
-      case 'muted':
+      case "muted":
         return `
           color: #6c757d;
           opacity: 0.75;
@@ -105,17 +105,17 @@ const StyledText = styled.span<TextProps>`
   /* Weight variants */
   ${({ weight }) => {
     switch (weight) {
-      case 'light':
+      case "light":
         return `font-weight: 300;`;
-      case 'normal':
+      case "normal":
         return `font-weight: 400;`;
-      case 'medium':
+      case "medium":
         return `font-weight: 500;`;
-      case 'semibold':
+      case "semibold":
         return `font-weight: 600;`;
-      case 'bold':
+      case "bold":
         return `font-weight: 700;`;
-      case 'extrabold':
+      case "extrabold":
         return `font-weight: 800;`;
       default:
         return `font-weight: 400;`;
@@ -133,13 +133,13 @@ const StyledText = styled.span<TextProps>`
   /* Text alignment */
   ${({ align }) => {
     switch (align) {
-      case 'left':
+      case "left":
         return `text-align: left;`;
-      case 'center':
+      case "center":
         return `text-align: center;`;
-      case 'right':
+      case "right":
         return `text-align: right;`;
-      case 'justify':
+      case "justify":
         return `text-align: justify;`;
       default:
         return `text-align: left;`;
@@ -149,14 +149,14 @@ const StyledText = styled.span<TextProps>`
   /* Display variants */
   ${({ as }) => {
     switch (as) {
-      case 'div':
-      case 'p':
-      case 'h1':
-      case 'h2':
-      case 'h3':
-      case 'h4':
-      case 'h5':
-      case 'h6':
+      case "div":
+      case "p":
+      case "h1":
+      case "h2":
+      case "h3":
+      case "h4":
+      case "h5":
+      case "h6":
         return `display: block;`;
       default:
         return `display: inline;`;
@@ -164,7 +164,9 @@ const StyledText = styled.span<TextProps>`
   }}
 
   /* Truncate text */
-  ${({ truncate }) => truncate && `
+  ${({ truncate }) =>
+    truncate &&
+    `
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -172,7 +174,9 @@ const StyledText = styled.span<TextProps>`
   `}
 
   /* Full width */
-  ${({ fullWidth }) => fullWidth && `
+  ${({ fullWidth }) =>
+    fullWidth &&
+    `
     width: 100%;
     display: block;
   `}
@@ -188,7 +192,10 @@ const StyledText = styled.span<TextProps>`
   }
 
   /* Hover effects for non-disabled text with onClick */
-  ${({ onClick, disabled }) => onClick && !disabled && `
+  ${({ onClick, disabled }) =>
+    onClick &&
+    !disabled &&
+    `
     cursor: pointer;
     &:hover {
       opacity: 0.8;
@@ -196,7 +203,9 @@ const StyledText = styled.span<TextProps>`
   `}
 
   /* Focus state for accessibility when clickable */
-  ${({ onClick }) => onClick && `
+  ${({ onClick }) =>
+    onClick &&
+    `
     &:focus {
       outline: 2px solid #007bff;
       outline-offset: 2px;
@@ -207,15 +216,15 @@ const StyledText = styled.span<TextProps>`
   @media (max-width: 768px) {
     ${({ size }) => {
       switch (size) {
-        case 'xs':
+        case "xs":
           return `font-size: 9px;`;
-        case 'small':
+        case "small":
           return `font-size: 11px;`;
-        case 'large':
+        case "large":
           return `font-size: 16px;`;
-        case 'xl':
+        case "xl":
           return `font-size: 20px;`;
-        case '2xl':
+        case "2xl":
           return `font-size: 24px;`;
         default:
           return `font-size: 13px;`;
@@ -226,15 +235,15 @@ const StyledText = styled.span<TextProps>`
   @media (max-width: 480px) {
     ${({ size }) => {
       switch (size) {
-        case 'xs':
+        case "xs":
           return `font-size: 8px;`;
-        case 'small':
+        case "small":
           return `font-size: 10px;`;
-        case 'large':
+        case "large":
           return `font-size: 15px;`;
-        case 'xl':
+        case "xl":
           return `font-size: 18px;`;
-        case '2xl':
+        case "2xl":
           return `font-size: 22px;`;
         default:
           return `font-size: 12px;`;
@@ -248,19 +257,19 @@ export const Text: React.FC<TextProps> = ({
   disabled = false,
   color,
   backgroundColor,
-  variant = 'primary',
-  size = 'medium',
-  weight = 'normal',
+  variant = "primary",
+  size = "medium",
+  weight = "normal",
   italic = false,
   underline = false,
   strikethrough = false,
   uppercase = false,
   lowercase = false,
   capitalize = false,
-  align = 'left',
+  align = "left",
   truncate = false,
   fullWidth = false,
-  as = 'span',
+  as = "span",
   className,
   onClick,
   ...props

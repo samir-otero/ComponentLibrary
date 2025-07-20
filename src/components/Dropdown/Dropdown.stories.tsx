@@ -1,65 +1,74 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { Dropdown } from './Dropdown';
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { Dropdown } from "./Dropdown";
 
-const mockAction = (actionName: string) => (...args: any[]) => {
-  console.log(`${actionName}:`, args);
-};
+const mockAction =
+  (actionName: string) =>
+  (...args: any[]) => {
+    console.log(`${actionName}:`, args);
+  };
 
-const sampleOptions = ['Option 1', 'Option 2', 'Option 3', 'Long Option Name Example', 'Option 5'];
+const sampleOptions = [
+  "Option 1",
+  "Option 2",
+  "Option 3",
+  "Long Option Name Example",
+  "Option 5",
+];
 
 const meta = {
-  title: 'Components/Dropdown',
+  title: "Components/Dropdown",
   component: Dropdown,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'A flexible dropdown component with multiple sizes and states.',
+        component:
+          "A flexible dropdown component with multiple sizes and states.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     options: {
-      control: 'object',
-      description: 'Array of dropdown options',
+      control: "object",
+      description: "Array of dropdown options",
     },
     placeholder: {
-      control: 'text',
-      description: 'Placeholder text when no option is selected',
+      control: "text",
+      description: "Placeholder text when no option is selected",
     },
     size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
-      description: 'Dropdown size',
+      control: { type: "select" },
+      options: ["small", "medium", "large"],
+      description: "Dropdown size",
     },
     backgroundColor: {
-      control: 'color',
-      description: 'Custom background color',
+      control: "color",
+      description: "Custom background color",
     },
     color: {
-      control: 'color',
-      description: 'Text color',
+      control: "color",
+      description: "Text color",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disabled state',
+      control: "boolean",
+      description: "Disabled state",
     },
     fullWidth: {
-      control: 'boolean',
-      description: 'Full width dropdown',
+      control: "boolean",
+      description: "Full width dropdown",
     },
     value: {
-      control: 'text',
-      description: 'Selected value',
+      control: "text",
+      description: "Selected value",
     },
     onChange: {
-      action: 'changed',
-      description: 'Change handler',
+      action: "changed",
+      description: "Change handler",
     },
   },
   args: {
-    onChange: mockAction('onChange'),
+    onChange: mockAction("onChange"),
     options: sampleOptions,
   },
 } satisfies Meta<typeof Dropdown>;
@@ -70,7 +79,7 @@ type Story = StoryObj<typeof meta>;
 // Default state
 export const Primary: Story = {
   args: {
-    placeholder: 'Select an option',
+    placeholder: "Select an option",
     options: sampleOptions,
   },
 };
@@ -78,24 +87,24 @@ export const Primary: Story = {
 // Size variations
 export const Small: Story = {
   args: {
-    placeholder: 'Small dropdown',
-    size: 'small',
+    placeholder: "Small dropdown",
+    size: "small",
     options: sampleOptions,
   },
 };
 
 export const Medium: Story = {
   args: {
-    placeholder: 'Medium dropdown',
-    size: 'medium',
+    placeholder: "Medium dropdown",
+    size: "medium",
     options: sampleOptions,
   },
 };
 
 export const Large: Story = {
   args: {
-    placeholder: 'Large dropdown',
-    size: 'large',
+    placeholder: "Large dropdown",
+    size: "large",
     options: sampleOptions,
   },
 };
@@ -103,7 +112,7 @@ export const Large: Story = {
 // Disabled state
 export const Disabled: Story = {
   args: {
-    placeholder: 'Disabled dropdown',
+    placeholder: "Disabled dropdown",
     disabled: true,
     options: sampleOptions,
   },
@@ -112,9 +121,9 @@ export const Disabled: Story = {
 // Custom colors
 export const CustomColor: Story = {
   args: {
-    placeholder: 'Custom color dropdown',
-    backgroundColor: '#28a745',
-    color: '#ffffff',
+    placeholder: "Custom color dropdown",
+    backgroundColor: "#28a745",
+    color: "#ffffff",
     options: sampleOptions,
   },
 };
@@ -122,19 +131,19 @@ export const CustomColor: Story = {
 // Full width
 export const FullWidth: Story = {
   args: {
-    placeholder: 'Full width dropdown',
+    placeholder: "Full width dropdown",
     fullWidth: true,
     options: sampleOptions,
   },
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
 };
 
 // With selected value
 export const WithValue: Story = {
   args: {
-    value: 'Option 2',
+    value: "Option 2",
     options: sampleOptions,
   },
 };
@@ -142,11 +151,18 @@ export const WithValue: Story = {
 // All sizes showcase
 export const AllSizes: Story = {
   args: {
-    placeholder: 'Dropdown',
+    placeholder: "Dropdown",
     options: sampleOptions,
   },
   render: (args: any) => (
-    <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "flex-start",
+        flexWrap: "wrap",
+      }}
+    >
       <Dropdown {...args} size="small" placeholder="Small" />
       <Dropdown {...args} size="medium" placeholder="Medium" />
       <Dropdown {...args} size="large" placeholder="Large" />
@@ -155,7 +171,7 @@ export const AllSizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Showcase of all available dropdown sizes',
+        story: "Showcase of all available dropdown sizes",
       },
     },
   },

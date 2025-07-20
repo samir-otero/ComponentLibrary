@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import { DropdownProps } from './Dropdown.types';
+import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
+import { DropdownProps } from "./Dropdown.types";
 
 const DropdownContainer = styled.div<{ fullWidth?: boolean }>`
   position: relative;
@@ -11,7 +11,7 @@ const DropdownContainer = styled.div<{ fullWidth?: boolean }>`
 // Define button props for styled component, omitting 'options' and other Dropdown-only props
 type DropdownButtonProps = Pick<
   DropdownProps,
-  'backgroundColor' | 'color' | 'size' | 'fullWidth' | 'disabled'
+  "backgroundColor" | "color" | "size" | "fullWidth" | "disabled"
 >;
 
 const DropdownButton = styled.button<DropdownButtonProps>`
@@ -34,13 +34,13 @@ const DropdownButton = styled.button<DropdownButtonProps>`
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'small':
+      case "small":
         return `
           padding: 8px 12px;
           font-size: 14px;
           min-height: 32px;
         `;
-      case 'large':
+      case "large":
         return `
           padding: 16px 20px;
           font-size: 18px;
@@ -66,7 +66,7 @@ const DropdownButton = styled.button<DropdownButtonProps>`
     if (color) {
       return `color: ${color};`;
     }
-    return '';
+    return "";
   }}
 
   /* Hover state */
@@ -94,13 +94,13 @@ const DropdownButton = styled.button<DropdownButtonProps>`
   @media (max-width: 768px) {
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             padding: 6px 10px;
             font-size: 12px;
             min-height: 28px;
           `;
-        case 'large':
+        case "large":
           return `
             padding: 14px 18px;
             font-size: 16px;
@@ -117,7 +117,10 @@ const DropdownButton = styled.button<DropdownButtonProps>`
   }
 `;
 
-const DropdownList = styled.ul<{ isOpen: boolean; size?: 'small' | 'medium' | 'large' }>`
+const DropdownList = styled.ul<{
+  isOpen: boolean;
+  size?: "small" | "medium" | "large";
+}>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -133,7 +136,7 @@ const DropdownList = styled.ul<{ isOpen: boolean; size?: 'small' | 'medium' | 'l
   max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
 
   /* Responsive design */
   @media (max-width: 768px) {
@@ -141,21 +144,27 @@ const DropdownList = styled.ul<{ isOpen: boolean; size?: 'small' | 'medium' | 'l
   }
 `;
 
-const DropdownItem = styled.li<{ size?: 'small' | 'medium' | 'large' }>`
+const DropdownItem = styled.li<{ size?: "small" | "medium" | "large" }>`
   padding: ${({ size }) => {
     switch (size) {
-      case 'small': return '8px 12px';
-      case 'large': return '16px 20px';
-      default: return '12px 16px';
+      case "small":
+        return "8px 12px";
+      case "large":
+        return "16px 20px";
+      default:
+        return "12px 16px";
     }
   }};
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   font-size: ${({ size }) => {
     switch (size) {
-      case 'small': return '14px';
-      case 'large': return '18px';
-      default: return '16px';
+      case "small":
+        return "14px";
+      case "large":
+        return "18px";
+      default:
+        return "16px";
     }
   }};
 
@@ -171,23 +180,29 @@ const DropdownItem = styled.li<{ size?: 'small' | 'medium' | 'large' }>`
   @media (max-width: 768px) {
     padding: ${({ size }) => {
       switch (size) {
-        case 'small': return '6px 10px';
-        case 'large': return '14px 18px';
-        default: return '10px 14px';
+        case "small":
+          return "6px 10px";
+        case "large":
+          return "14px 18px";
+        default:
+          return "10px 14px";
       }
     }};
     font-size: ${({ size }) => {
       switch (size) {
-        case 'small': return '12px';
-        case 'large': return '16px';
-        default: return '14px';
+        case "small":
+          return "12px";
+        case "large":
+          return "16px";
+        default:
+          return "14px";
       }
     }};
   }
 `;
 
 const ChevronIcon = styled.span<{ isOpen: boolean }>`
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0deg)")};
   transition: transform 0.2s ease-in-out;
   margin-left: 8px;
   font-size: 12px;
@@ -195,11 +210,11 @@ const ChevronIcon = styled.span<{ isOpen: boolean }>`
 
 export const Dropdown: React.FC<DropdownProps> = ({
   options = [],
-  placeholder = 'Select an option',
+  placeholder = "Select an option",
   disabled = false,
   backgroundColor,
   color,
-  size = 'medium',
+  size = "medium",
   onChange,
   value,
   className,
@@ -207,7 +222,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(value || '');
+  const [selectedValue, setSelectedValue] = useState(value || "");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleToggle = () => {
@@ -227,26 +242,33 @@ export const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
       setIsOpen(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   useEffect(() => {
-    setSelectedValue(value || '');
+    setSelectedValue(value || "");
   }, [value]);
 
   const displayValue = selectedValue || placeholder;
 
   return (
-    <DropdownContainer ref={dropdownRef} fullWidth={fullWidth} className={className}>
+    <DropdownContainer
+      ref={dropdownRef}
+      fullWidth={fullWidth}
+      className={className}
+    >
       <DropdownButton
         onClick={handleToggle}
         disabled={disabled}

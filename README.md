@@ -7,12 +7,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Setup Instructions
 
 1. Build the Docker image:
+
    ```bash
    docker build -t otero_samir_coding_assignment13 .
 
+   ```
+
 2. Run the container:
-    ```bash
-    docker run -p 8018:8018 --name otero_samir_coding_assignment13 otero_samir_coding_assignment13
+
+   ```bash
+   docker run -p 8018:8018 --name otero_samir_coding_assignment13 otero_samir_coding_assignment13
+
+   ```
 
 3. Access the component library at: http://localhost:8018
 

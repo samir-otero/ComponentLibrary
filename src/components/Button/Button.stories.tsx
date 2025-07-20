@@ -1,60 +1,63 @@
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { Button } from './Button';
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { Button } from "./Button";
 
-const mockAction = (actionName: string) => (...args: any[]) => {
-  console.log(`${actionName}:`, args);
-};
+const mockAction =
+  (actionName: string) =>
+  (...args: any[]) => {
+    console.log(`${actionName}:`, args);
+  };
 
 const meta = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'A flexible button component with multiple variants, sizes, and states.',
+        component:
+          "A flexible button component with multiple variants, sizes, and states.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     children: {
-      control: 'text',
-      description: 'Button content',
+      control: "text",
+      description: "Button content",
     },
     variant: {
-      control: { type: 'select' },
-      options: ['primary', 'secondary', 'outline'],
-      description: 'Button variant',
+      control: { type: "select" },
+      options: ["primary", "secondary", "outline"],
+      description: "Button variant",
     },
     size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
-      description: 'Button size',
+      control: { type: "select" },
+      options: ["small", "medium", "large"],
+      description: "Button size",
     },
     backgroundColor: {
-      control: 'color',
-      description: 'Custom background color',
+      control: "color",
+      description: "Custom background color",
     },
     color: {
-      control: 'color',
-      description: 'Text color',
+      control: "color",
+      description: "Text color",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disabled state',
+      control: "boolean",
+      description: "Disabled state",
     },
     fullWidth: {
-      control: 'boolean',
-      description: 'Full width button',
+      control: "boolean",
+      description: "Full width button",
     },
     onClick: {
-      action: 'clicked',
-      description: 'Click handler',
+      action: "clicked",
+      description: "Click handler",
     },
   },
   args: {
-    onClick: mockAction('onClick'),
+    onClick: mockAction("onClick"),
   },
 } satisfies Meta<typeof Button>;
 
@@ -64,67 +67,67 @@ type Story = StoryObj<typeof meta>;
 // Default state
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
-    variant: 'primary',
+    children: "Primary Button",
+    variant: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary Button',
-    variant: 'secondary',
+    children: "Secondary Button",
+    variant: "secondary",
   },
 };
 
 export const Outline: Story = {
   args: {
-    children: 'Outline Button',
-    variant: 'outline',
+    children: "Outline Button",
+    variant: "outline",
   },
 };
 
 // Size variations
 export const Small: Story = {
   args: {
-    children: 'Small Button',
-    size: 'small',
+    children: "Small Button",
+    size: "small",
   },
 };
 
 export const Medium: Story = {
   args: {
-    children: 'Medium Button',
-    size: 'medium',
+    children: "Medium Button",
+    size: "medium",
   },
 };
 
 export const Large: Story = {
   args: {
-    children: 'Large Button',
-    size: 'large',
+    children: "Large Button",
+    size: "large",
   },
 };
 
 // Disabled states
 export const Disabled: Story = {
   args: {
-    children: 'Disabled Button',
+    children: "Disabled Button",
     disabled: true,
   },
 };
 
 export const DisabledSecondary: Story = {
   args: {
-    children: 'Disabled Secondary',
-    variant: 'secondary',
+    children: "Disabled Secondary",
+    variant: "secondary",
     disabled: true,
   },
 };
 
 export const DisabledOutline: Story = {
   args: {
-    children: 'Disabled Outline',
-    variant: 'outline',
+    children: "Disabled Outline",
+    variant: "outline",
     disabled: true,
   },
 };
@@ -132,54 +135,67 @@ export const DisabledOutline: Story = {
 // Custom colors
 export const CustomColor: Story = {
   args: {
-    children: 'Custom Color',
-    backgroundColor: '#28a745',
-    color: '#ffffff',
+    children: "Custom Color",
+    backgroundColor: "#28a745",
+    color: "#ffffff",
   },
 };
 
 export const CustomColorOutline: Story = {
   args: {
-    children: 'Custom Outline',
-    variant: 'outline',
-    backgroundColor: '#dc3545',
+    children: "Custom Outline",
+    variant: "outline",
+    backgroundColor: "#dc3545",
   },
 };
 
 // Full width
 export const FullWidth: Story = {
   args: {
-    children: 'Full Width Button',
+    children: "Full Width Button",
     fullWidth: true,
   },
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
 };
 
 // Interactive example
 export const Interactive: Story = {
   args: {
-    children: 'Click Me!',
-    onClick: () => alert('Button clicked!'),
+    children: "Click Me!",
+    onClick: () => alert("Button clicked!"),
   },
 };
 
 export const AllSizes: Story = {
   args: {
-    children: 'Button',
+    children: "Button",
   },
   render: (args) => (
-    <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button {...args} size="small">Small</Button>
-      <Button {...args} size="medium">Medium</Button>
-      <Button {...args} size="large">Large</Button>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <Button {...args} size="small">
+        Small
+      </Button>
+      <Button {...args} size="medium">
+        Medium
+      </Button>
+      <Button {...args} size="large">
+        Large
+      </Button>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Showcase of all available button sizes',
+        story: "Showcase of all available button sizes",
       },
     },
   },
@@ -188,19 +204,32 @@ export const AllSizes: Story = {
 // All variants showcase
 export const AllVariants: Story = {
   args: {
-    children: 'Button',
+    children: "Button",
   },
   render: (args) => (
-    <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button {...args} variant="primary">Primary</Button>
-      <Button {...args} variant="secondary">Secondary</Button>
-      <Button {...args} variant="outline">Outline</Button>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Showcase of all available button variants',
+        story: "Showcase of all available button variants",
       },
     },
   },

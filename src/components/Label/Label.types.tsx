@@ -3,8 +3,8 @@ export interface LabelProps {
   disabled?: boolean;
   color?: string;
   backgroundColor?: string;
-  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
-  size?: 'small' | 'medium' | 'large';
+  variant?: "primary" | "secondary" | "success" | "danger" | "warning" | "info";
+  size?: "small" | "medium" | "large";
   required?: boolean;
   bold?: boolean;
   italic?: boolean;

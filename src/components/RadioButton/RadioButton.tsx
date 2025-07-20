@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { RadioButtonProps } from './RadioButton.types';
+import React from "react";
+import styled from "styled-components";
+import { RadioButtonProps } from "./RadioButton.types";
 
 const RadioContainer = styled.label<RadioButtonProps>`
   display: inline-flex;
   align-items: center;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? 0.65 : 1)};
   font-family: inherit;
   user-select: none;
@@ -14,12 +14,12 @@ const RadioContainer = styled.label<RadioButtonProps>`
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'small':
+      case "small":
         return `
           font-size: 14px;
           gap: 6px;
         `;
-      case 'large':
+      case "large":
         return `
           font-size: 18px;
           gap: 10px;
@@ -39,12 +39,12 @@ const RadioContainer = styled.label<RadioButtonProps>`
   @media (max-width: 768px) {
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             font-size: 12px;
             gap: 4px;
           `;
-        case 'large':
+        case "large":
           return `
             font-size: 16px;
             gap: 8px;
@@ -59,7 +59,7 @@ const RadioContainer = styled.label<RadioButtonProps>`
   }
 `;
 
-const HiddenRadio = styled.input.attrs({ type: 'radio' })`
+const HiddenRadio = styled.input.attrs({ type: "radio" })`
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -79,12 +79,12 @@ const CustomRadio = styled.div<RadioButtonProps>`
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'small':
+      case "small":
         return `
           width: 16px;
           height: 16px;
         `;
-      case 'large':
+      case "large":
         return `
           width: 24px;
           height: 24px;
@@ -98,33 +98,35 @@ const CustomRadio = styled.div<RadioButtonProps>`
   }}
 
   /* Custom colors */
-  ${({ backgroundColor }) => backgroundColor && `
+  ${({ backgroundColor }) =>
+    backgroundColor &&
+    `
     border-color: ${backgroundColor};
   `}
 
   /* Checked state */
   ${HiddenRadio}:checked + & {
-    border-color: ${({ backgroundColor }) => backgroundColor || '#007bff'};
-    background-color: ${({ backgroundColor }) => backgroundColor || '#007bff'};
+    border-color: ${({ backgroundColor }) => backgroundColor || "#007bff"};
+    background-color: ${({ backgroundColor }) => backgroundColor || "#007bff"};
   }
 
   /* Checked state inner circle */
   ${HiddenRadio}:checked + &::after {
-    content: '';
+    content: "";
     position: absolute;
     border-radius: 50%;
     background-color: #ffffff;
 
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             width: 6px;
             height: 6px;
             top: 3px;
             left: 3px;
           `;
-        case 'large':
+        case "large":
           return `
             width: 10px;
             height: 10px;
@@ -144,7 +146,7 @@ const CustomRadio = styled.div<RadioButtonProps>`
 
   /* Hover state */
   ${RadioContainer}:hover:not([disabled]) & {
-    border-color: ${({ backgroundColor }) => backgroundColor || '#007bff'};
+    border-color: ${({ backgroundColor }) => backgroundColor || "#007bff"};
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
   }
 
@@ -155,7 +157,9 @@ const CustomRadio = styled.div<RadioButtonProps>`
   }
 
   /* Disabled state */
-  ${({ disabled }) => disabled && `
+  ${({ disabled }) =>
+    disabled &&
+    `
     background-color: #e9ecef !important;
     border-color: #dee2e6 !important;
 
@@ -168,12 +172,12 @@ const CustomRadio = styled.div<RadioButtonProps>`
   @media (max-width: 768px) {
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             width: 14px;
             height: 14px;
           `;
-        case 'large':
+        case "large":
           return `
             width: 22px;
             height: 22px;
@@ -189,14 +193,14 @@ const CustomRadio = styled.div<RadioButtonProps>`
     ${HiddenRadio}:checked + &::after {
       ${({ size }) => {
         switch (size) {
-          case 'small':
+          case "small":
             return `
               width: 4px;
               height: 4px;
               top: 3px;
               left: 3px;
             `;
-          case 'large':
+          case "large":
             return `
               width: 8px;
               height: 8px;
@@ -218,7 +222,7 @@ const CustomRadio = styled.div<RadioButtonProps>`
 
 const LabelText = styled.span<{ disabled?: boolean; color?: string }>`
   ${({ disabled, color }) => `
-    color: ${disabled ? '#6c757d' : (color || '#333333')};
+    color: ${disabled ? "#6c757d" : color || "#333333"};
   `}
 `;
 
@@ -230,7 +234,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   disabled = false,
   backgroundColor,
   color,
-  size = 'medium',
+  size = "medium",
   onChange,
   className,
   ...props

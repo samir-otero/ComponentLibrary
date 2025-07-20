@@ -1,65 +1,65 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CardProps } from './Card.types';
+import React from "react";
+import styled from "styled-components";
+import { CardProps } from "./Card.types";
 
 // Filter out styling-only props from being passed to the DOM
 const StyledCard = styled.div.withConfig({
   shouldForwardProp: (prop) => {
     // Don't forward styling-only props to DOM
     const stylingProps = [
-      'backgroundColor',
-      'borderColor',
-      'borderRadius',
-      'elevation',
-      'size',
-      'fullWidth',
-      'clickable',
-      'disabled',
-      'padding',
-      'margin'
+      "backgroundColor",
+      "borderColor",
+      "borderRadius",
+      "elevation",
+      "size",
+      "fullWidth",
+      "clickable",
+      "disabled",
+      "padding",
+      "margin",
     ];
 
     // Only block the styling props, allow everything else through
     return !stylingProps.includes(prop);
   },
 })<CardProps>`
-  background-color: ${({ backgroundColor }) => backgroundColor || '#ffffff'};
-  border: 1px solid ${({ borderColor }) => borderColor || '#e0e0e0'};
-  border-radius: ${({ borderRadius }) => borderRadius || '8px'};
+  background-color: ${({ backgroundColor }) => backgroundColor || "#ffffff"};
+  border: 1px solid ${({ borderColor }) => borderColor || "#e0e0e0"};
+  border-radius: ${({ borderRadius }) => borderRadius || "8px"};
   box-shadow: ${({ elevation }) => {
     switch (elevation) {
-      case 'low':
-        return '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)';
-      case 'medium':
-        return '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)';
-      case 'high':
-        return '0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)';
+      case "low":
+        return "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)";
+      case "medium":
+        return "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)";
+      case "high":
+        return "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)";
       default:
-        return '0 2px 4px rgba(0, 0, 0, 0.1)';
+        return "0 2px 4px rgba(0, 0, 0, 0.1)";
     }
   }};
-  padding: ${({ padding }) => padding || '16px'};
-  margin: ${({ margin }) => margin || '0'};
+  padding: ${({ padding }) => padding || "16px"};
+  margin: ${({ margin }) => margin || "0"};
   transition: all 0.3s ease-in-out;
   cursor: ${({ clickable, disabled }) => {
-    if (disabled) return 'not-allowed';
-    if (clickable) return 'pointer';
-    return 'default';
+    if (disabled) return "not-allowed";
+    if (clickable) return "pointer";
+    return "default";
   }};
-  opacity: ${({ disabled }) => disabled ? '0.6' : '1'};
-  pointer-events: ${({ disabled }) => disabled ? 'none' : 'auto'};
+  opacity: ${({ disabled }) => (disabled ? "0.6" : "1")};
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
   position: relative;
   overflow: hidden;
 
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'small':
+      case "small":
         return `
           max-width: 280px;
           min-height: 120px;
         `;
-      case 'large':
+      case "large":
         return `
           max-width: 600px;
           min-height: 300px;
@@ -73,13 +73,18 @@ const StyledCard = styled.div.withConfig({
   }}
 
   /* Full width */
-  ${({ fullWidth }) => fullWidth && `
+  ${({ fullWidth }) =>
+    fullWidth &&
+    `
     width: 100%;
     max-width: none;
   `}
 
   /* Hover effects for clickable cards */
-  ${({ clickable, disabled }) => clickable && !disabled && `
+  ${({ clickable, disabled }) =>
+    clickable &&
+    !disabled &&
+    `
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -91,7 +96,9 @@ const StyledCard = styled.div.withConfig({
   `}
 
   /* Disabled state */
-  ${({ disabled }) => disabled && `
+  ${({ disabled }) =>
+    disabled &&
+    `
     background-color: #f5f5f5;
     border-color: #d0d0d0;
     color: #999999;
@@ -102,15 +109,15 @@ const StyledCard = styled.div.withConfig({
 
   /* Responsive design */
   @media (max-width: 768px) {
-    padding: ${({ padding }) => padding || '12px'};
+    padding: ${({ padding }) => padding || "12px"};
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             max-width: 240px;
             min-height: 100px;
           `;
-        case 'large':
+        case "large":
           return `
             max-width: 100%;
             min-height: 250px;
@@ -125,15 +132,15 @@ const StyledCard = styled.div.withConfig({
   }
 
   @media (max-width: 480px) {
-    margin: ${({ margin }) => margin || '0 0 16px 0'};
-    padding: ${({ padding }) => padding || '12px'};
+    margin: ${({ margin }) => margin || "0 0 16px 0"};
+    padding: ${({ padding }) => padding || "12px"};
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             min-height: 80px;
           `;
-        case 'large':
+        case "large":
           return `
             min-height: 200px;
           `;
@@ -202,8 +209,8 @@ export const Card: React.FC<CardProps> = ({
   backgroundColor,
   borderColor,
   borderRadius,
-  elevation = 'default',
-  size = 'medium',
+  elevation = "default",
+  size = "medium",
   padding,
   margin,
   fullWidth = false,
@@ -211,15 +218,19 @@ export const Card: React.FC<CardProps> = ({
   className,
   ...props
 }) => {
-  const handleInteraction = (event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>) => {
+  const handleInteraction = (
+    event:
+      | React.MouseEvent<HTMLDivElement>
+      | React.KeyboardEvent<HTMLDivElement>,
+  ) => {
     if (!disabled && clickable && onClick) {
       if (
-        (event as React.MouseEvent<HTMLDivElement>).type === 'click' ||
-        ((event as React.KeyboardEvent<HTMLDivElement>).type === 'keydown' &&
-          ((event as React.KeyboardEvent<HTMLDivElement>).key === 'Enter' ||
-            (event as React.KeyboardEvent<HTMLDivElement>).key === ' '))
+        (event as React.MouseEvent<HTMLDivElement>).type === "click" ||
+        ((event as React.KeyboardEvent<HTMLDivElement>).type === "keydown" &&
+          ((event as React.KeyboardEvent<HTMLDivElement>).key === "Enter" ||
+            (event as React.KeyboardEvent<HTMLDivElement>).key === " "))
       ) {
-        if ((event as React.KeyboardEvent<HTMLDivElement>).type === 'keydown') {
+        if ((event as React.KeyboardEvent<HTMLDivElement>).type === "keydown") {
           (event as React.KeyboardEvent<HTMLDivElement>).preventDefault();
         }
         onClick(event);
@@ -245,20 +256,18 @@ export const Card: React.FC<CardProps> = ({
       onKeyDown={handleInteraction}
       className={className}
       tabIndex={clickable && !disabled ? 0 : undefined}
-      role={clickable ? 'button' : undefined}
+      role={clickable ? "button" : undefined}
       aria-disabled={disabled ? true : undefined}
       {...props}
     >
-      {image && <CardImage src={image.src} alt={image.alt || 'Card image'} />}
+      {image && <CardImage src={image.src} alt={image.alt || "Card image"} />}
       {(title || subtitle) && (
         <CardHeader>
           {title && <CardTitle>{title}</CardTitle>}
           {subtitle && <CardSubtitle>{subtitle}</CardSubtitle>}
         </CardHeader>
       )}
-      <CardContent>
-        {children}
-      </CardContent>
+      <CardContent>{children}</CardContent>
       {footer && <CardFooter>{footer}</CardFooter>}
     </StyledCard>
   );

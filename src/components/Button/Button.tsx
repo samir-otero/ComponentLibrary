@@ -1,10 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ButtonProps } from './Button.types';
+import React from "react";
+import styled from "styled-components";
+import { ButtonProps } from "./Button.types";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
-    !['backgroundColor', 'color', 'variant', 'size', 'fullWidth'].includes(prop)
+    !["backgroundColor", "color", "variant", "size", "fullWidth"].includes(
+      prop,
+    ),
 })<ButtonProps>`
   border: none;
   border-radius: 4px;
@@ -23,13 +25,13 @@ const StyledButton = styled.button.withConfig({
   /* Size variants */
   ${({ size }) => {
     switch (size) {
-      case 'small':
+      case "small":
         return `
           padding: 8px 16px;
           font-size: 14px;
           min-height: 32px;
         `;
-      case 'large':
+      case "large":
         return `
           padding: 16px 32px;
           font-size: 18px;
@@ -45,17 +47,19 @@ const StyledButton = styled.button.withConfig({
   }}
 
   /* Width */
-  ${({ fullWidth }) => fullWidth && `
+  ${({ fullWidth }) =>
+    fullWidth &&
+    `
     width: 100%;
   `}
 
   /* Variant styles */
   ${({ variant, backgroundColor, color }) => {
-    const bgColor = backgroundColor || '#007bff';
-    const textColor = color || '#ffffff';
+    const bgColor = backgroundColor || "#007bff";
+    const textColor = color || "#ffffff";
 
     switch (variant) {
-      case 'secondary':
+      case "secondary":
         return `
           background-color: #6c757d;
           color: ${textColor};
@@ -68,7 +72,7 @@ const StyledButton = styled.button.withConfig({
             transform: translateY(0);
           }
         `;
-      case 'outline':
+      case "outline":
         return `
           background-color: transparent;
           color: ${bgColor};
@@ -124,13 +128,13 @@ const StyledButton = styled.button.withConfig({
   @media (max-width: 768px) {
     ${({ size }) => {
       switch (size) {
-        case 'small':
+        case "small":
           return `
             padding: 6px 12px;
             font-size: 12px;
             min-height: 28px;
           `;
-        case 'large':
+        case "large":
           return `
             padding: 14px 28px;
             font-size: 16px;
@@ -147,7 +151,9 @@ const StyledButton = styled.button.withConfig({
   }
 
   @media (max-width: 480px) {
-    ${({ fullWidth }) => !fullWidth && `
+    ${({ fullWidth }) =>
+      !fullWidth &&
+      `
       min-width: 120px;
     `}
   }
@@ -158,10 +164,10 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   backgroundColor,
   color,
-  variant = 'primary',
-  size = 'medium',
+  variant = "primary",
+  size = "medium",
   onClick,
-  type = 'button',
+  type = "button",
   className,
   fullWidth = false,
   ...props

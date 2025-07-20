@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom';
-import 'jest-styled-components';
+import "@testing-library/jest-dom";
+import "jest-styled-components";
 
 // JSDOM polyfills
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
@@ -9,18 +9,20 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
 }));
 
 // Mock window.matchMedia
-global.matchMedia = global.matchMedia || function (query) {
-  return {
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
+global.matchMedia =
+  global.matchMedia ||
+  function (query) {
+    return {
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // deprecated
+      removeListener: jest.fn(), // deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    };
   };
-};
 
 // Mock IntersectionObserver
 global.IntersectionObserver = jest.fn().mockImplementation(() => ({
@@ -66,5 +68,5 @@ if (!global.document.createRange) {
       END_TO_END: 1,
       START_TO_END: 3,
       START_TO_START: 0,
-    } as unknown as Range);
+    }) as unknown as Range;
 }

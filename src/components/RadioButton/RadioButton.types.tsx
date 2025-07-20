@@ -6,7 +6,7 @@ export interface RadioButtonProps {
   disabled?: boolean;
   backgroundColor?: string;
   color?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }

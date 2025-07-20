@@ -1,4 +1,10 @@
-export { Table, TableHeader, TableRowComponent, TableCell, TableFooter } from './Table';
+export {
+  Table,
+  TableHeader,
+  TableRowComponent,
+  TableCell,
+  TableFooter,
+} from "./Table";
 export type {
   TableProps,
   TableHeaderProps,
@@ -6,5 +12,5 @@ export type {
   TableCellProps,
   TableFooterProps,
   TableColumn,
-  TableRow
-} from './Table.types';
+  TableRow,
+} from "./Table.types";
